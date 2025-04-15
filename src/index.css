@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@layer base {
+  @font-face {
+    font-family: "resident_evil_4";
+    src: url("/public/fonts/gothic_font.otf");
+  }
+
+  @font-face {
+    font-family: "Cinzel";
+    src: url("/public/fonts/Cinzel.ttf");
+  }
+}
+
+@theme {
+  --font-primary: "resident_evil_4";
+  --font-secondary: "Cinzel";
+  /* --color- */
+}

@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import Hero from "./components/Hero";
+import Loader from "./components/Loader";
+import "./index.css";
 
 const App = () => {
-  return <div>App</div>;
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <div className="h-screen w-full">
+      {loading && <Loader onComplete={() => setLoading(false)} />}
+      {!loading && <Hero />}
+    </div>
+  );
 };
 
 export default App;
