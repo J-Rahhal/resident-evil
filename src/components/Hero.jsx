@@ -5,17 +5,36 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  const titleRef = useRef([]);
   const videoRef = useRef(null);
+
+  const CheckRefs = (element) => {
+    if (element && !titleRef.current.includes(element)) {
+      titleRef.current.push(element);
+    }
+  };
 
   useEffect(() => {
     const video = videoRef.current;
     gsap.to(video, {
+      borderRadius: "20px",
+      color: "red",
       clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
-      scale: 0.9,
-      transform: "perspective(1000px) rotateX(15deg)",
+      scale: 0.8,
+      transform: "perspective(1000px) rotateX(40deg) rotateY(15deg)",
       ease: "power2.out",
       scrollTrigger: {
         trigger: video,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+
+    gsap.to(titleRef.current, {
+      color: "red",
+      scrollTrigger: {
+        trigger: videoRef.current,
         start: "top top",
         end: "bottom top",
         scrub: true,
@@ -39,12 +58,18 @@ const Hero = () => {
         }}
       />
 
-      <div className="relative z-10 w-full h-full font-secondary px-4">
-        <p className=" text-4xl py-4 drop-shadow-lg text-white">
+      <div
+        className="relative z-10 w-full h-full font-secondary px-4"
+        ref={CheckRefs}
+      >
+        <p className=" text-5xl py-4 drop-shadow-lg text-white">
           <span className="text-red-500">R</span>esident
         </p>
       </div>
-      <div className="absolute bottom-6 right-6 z-20 text-white text-4xl font-secondary tracking-wide">
+      <div
+        className="absolute bottom-6 right-6 z-20 text-white text-6xl font-secondary tracking-wide"
+        ref={CheckRefs}
+      >
         <span className="text-red-500">E</span>vil
       </div>
     </div>
