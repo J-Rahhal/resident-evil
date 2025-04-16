@@ -7,7 +7,7 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   return (
-    <div className="h-screen w-full">
+    <div className="h-screen w-full bg-red-900">
       {loading && <Loader onComplete={() => setLoading(false)} />}
       {!loading && <Hero />}
     </div>
