@@ -3,7 +3,7 @@
 @layer base {
   @font-face {
     font-family: "resident_evil_4";
-    src: url("/public/fonts/gothic_font.otf");
+    src: url("/public/fonts/re.otf");
   }
 
   @font-face {
